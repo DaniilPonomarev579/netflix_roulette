@@ -1,0 +1,56 @@
+@import "../../variables";
+
+.search-panel {
+  color: #fff;
+
+  &__title {
+    text-transform: uppercase;
+    text-shadow: 1px 1px #000;
+    margin-bottom: 1rem;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    background: #000;
+    padding: 1rem;
+    padding-right: 3.5rem;
+    box-sizing: border-box;
+    opacity: .8;
+    color: #eee;
+    border: none;
+    border-bottom: 2px solid @pink-color;
+    outline: none;
+  }
+
+  &__input-button {
+    position: absolute;
+    top: .5rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    z-index: 1;
+    color: #aaa;
+    background: none;
+  }
+
+  &__filter-title {
+    text-transform: uppercase;
+  }
+
+  &__filter-label {
+
+  }
+  
+  &__filter-input {
+
+  }
+
+  &__search-button {
+    float: right;
+  }
+}

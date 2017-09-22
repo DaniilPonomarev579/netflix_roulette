@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.button {
+  border-radius: 3px;
+  padding: .7rem 4rem;
+  text-transform: uppercase;
+  outline: none;
+  background: @pink-color;
+  color: #fff;
+
+  &:hover {
+    background: @hover-pink-color;
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px @active-pink-color, inset -1px -1px @active-pink-color;
+  }
+
+  &--white {
+    background: #fff;
+    color: @pink-color;
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../variables";
+
+.radiobutton {
+  display: none;
+
+  &--active {
+
+  }
+
+  &+label {
+    display: inline-block;
+    border-radius: 3px;
+    padding: .5rem 1rem;
+    margin: 0 .5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #555;
+    color: #fff;
+
+    &:hover {
+      background: @hover-pink-color;
+    }
+
+    &:active {
+      box-shadow: inset 1px 1px @active-pink-color, inset -1px -1px @active-pink-color;
+    }
+  }
+  
+  &:checked + label {
+    background: @pink-color;
+
+    &:hover {
+      background: @hover-pink-color;
+    }
+
+    &:active {
+      box-shadow: inset 1px 1px @active-pink-color, inset -1px -1px @active-pink-color;
+    }
+  }
+}

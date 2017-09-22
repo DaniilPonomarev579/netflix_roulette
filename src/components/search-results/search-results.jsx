@@ -4,33 +4,49 @@ class searchResults extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            liked: true,
-            c: 1
+            results: [
+                {
+                    cover: 'cover1',
+                    title: 'title1',
+                    year: 'year1',
+                    genre: 'genre1'
+                },
+                {
+                    cover: 'cover2',
+                    title: 'title2',
+                    year: 'year2',
+                    genre: 'genre2'
+                }
+            ]
         };
     }
 
     toggleSmth() {
         this.setState((prevState) => ({
-            liked: !prevState.liked,
-            c: prevState.c++
+            results: prevState.results.push({
+                cover: 'cover3',
+                title: 'title3',
+                year: 'year3',
+                genre: 'genre3'
+            })
         }));
     }
 
     componentDidMount() {
-        this.c++;
+        this.results[0].title = 'titleeeee';
     }
 
     componentWillUnmount() {
-        this.c++;
+        this.results[0].title = 'title';
     }
 
     render() {
-        let buttonClass = this.state.liked ? 'active' : '';
+        // let buttonClass = this.state.liked ? 'active' : '';
 
         return (
             <div className='search-results'>
                 <div className="search-results__top-panel">
-
+                    {this.state.results.length === 0 ? (null):(this.state.results.length)}
                 </div>
             </div>
         );

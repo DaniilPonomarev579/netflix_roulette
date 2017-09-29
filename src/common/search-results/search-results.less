@@ -1,0 +1,68 @@
+@import "../variables";
+
+.search-results {
+  min-height: ~"calc(100vh - 20.6rem)";
+
+  &__top-panel {
+    //height: 4rem;
+    background: #eee;
+    padding: 1rem 4rem;
+    min-height: 4rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #555;
+  }
+
+  &__sort-box {
+    float: right;
+  }
+
+  &__sort-criterion {
+    display: none;
+
+    &+label {
+      display: inline-block;
+      margin: 0 .5rem;
+      cursor: pointer;
+      font-weight: bold;
+
+      &:hover {
+        text-shadow: 0 0 1px @pink-color;
+      }
+
+      &:active {
+        text-shadow: 0 0 2px @pink-color;
+      }
+    }
+
+    &:checked + label {
+      color: @pink-color;
+
+      &:hover {
+        text-shadow: 0 0 1px @pink-color;
+      }
+
+      &:active {
+        text-shadow: 0 0 2px @pink-color;
+      }
+    }
+  }
+
+  &__sort-label {
+
+  }
+
+  &__films-panel {
+
+  }
+
+  &__no-film-span {
+    display: block;
+    text-align: center;
+    color: #ccc;
+    height: ~"calc(100vh - 24.6rem)";
+    line-height: ~"calc(100vh - 20.6rem)";
+    font-size: 5rem;
+  }
+}

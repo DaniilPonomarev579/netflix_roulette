@@ -11,14 +11,19 @@ module.exports = {
 
     entry: {
         // vendor: ['react', 'react-dom', 'express'],
-        app   : './app.jsx',
-        styles: './styles/styles.less'
+        app   : './index.jsx',
+        //+ styles: './styles/styles.less' // не надо,все стили импортятся прямо в компоненты
+        //+ не использовать export default, надо без него и в импорте {}
+        // на странице с фильмом сначала рендерится спиннер, потом по componentDidMount выполняется запрос через fetch
+        //+ название компонента должно совпадать с именем файла
+        // по кнопке на форме в функции preventDefault и программно делать через WithRouter
     },
 
     output: {
         path    : DIST_DIR,
         filename: '[name].js',
         // filename: 'bundle.js',
+        publicPath: '/'
     },
 
     devtool: 'eval',
@@ -30,10 +35,11 @@ module.exports = {
     watch: true,
 
     plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
+        // new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             PRODUCTION: false,
-            VERSION   : JSON.stringify('1.0.0')
+            VERSION   : JSON.stringify('1.0.0'),
+            PUBLIC_PATH: DIST_DIR
         }),
         new HtmlWebpackPlugin({
                 title   : 'Netflix Roulette Built',
@@ -72,5 +78,11 @@ module.exports = {
                 }
             }
         }]
-    }
+    },
+
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './built',
+        hot: true
+    },
 };

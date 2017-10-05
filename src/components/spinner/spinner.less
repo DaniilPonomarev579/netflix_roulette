@@ -1,0 +1,35 @@
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+
+  &__bounce {
+    display: inline-block;
+    background: #999;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 100%;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    animation-fill-mode: both;
+
+    &--1 {
+      animation-delay: -0.32s;
+    }
+
+    &--2 {
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+@keyframes bouncedelay {
+  from {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}

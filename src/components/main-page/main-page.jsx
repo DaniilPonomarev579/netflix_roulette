@@ -14,7 +14,7 @@ export class MainPage extends React.Component {
         return (
             <div>
                 <MainHeader/>
-                <SearchResults/>
+                <SearchResults query={this.props.location.pathname}/>
             </div>
         );
     }

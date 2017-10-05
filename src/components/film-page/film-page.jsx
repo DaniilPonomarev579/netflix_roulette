@@ -1,7 +1,8 @@
 import React from 'react';
+
 import {FilmHeader} from '../header/film-header';
 import {SearchResults} from '../search-results/search-results';
-import {Footer} from '../footer/footer';
+import {Spinner} from '../spinner/spinner';
 
 export class FilmPage extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ export class FilmPage extends React.Component {
             <div>
                 <FilmHeader film={this.state.film} props={this.props}/>
                 <SearchResults/>
+                <Spinner/>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Redirect} from 'react-router';
+import {Link} from 'react-router-dom';
 
 import {FilmInfo} from '../film-info/film-info';
 
@@ -20,7 +20,6 @@ export class FilmHeader extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // this.setState({fireRedirect: true});
         this.props.props.history.push('/');
     }
 
@@ -31,10 +30,7 @@ export class FilmHeader extends React.Component {
                 <button className='header__search-button button button--white' onClick={this.handleSubmit}>
                     search
                 </button>
-                {/*{this.state.fireRedirect && (*/}
-                    {/*<Redirect to={'/'}/>*/}
-                {/*)}*/}
-                <h3 className='header__title'>netflixroulette</h3>
+                <Link to='/' className='header__title'>netflixroulette</Link>
                 <FilmInfo film={this.state.film}/>
             </div>
         );

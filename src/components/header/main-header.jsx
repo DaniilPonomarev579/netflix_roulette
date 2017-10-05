@@ -1,21 +1,15 @@
 import React from 'react';
-
 import {Searcher} from '../searcher/searcher';
+import {Link} from 'react-router-dom';
 
 import './header.less';
 
-// const MainHeader = () => (
-//     <div className='header'>
-//         <span className='header__title'>netflixroulette</span>
-//         <Searcher classElement={'hahahaha'}/>
-//     </div>
-// );
 export class MainHeader extends React.Component {
     render() {
         return (
             <div className='header'>
                 <div className="header__background"></div>
-                <h3 className='header__title'>netflixroulette</h3>
+                <Link to='/' className='header__title'>netflixroulette</Link>
                 <Searcher classElement={'header__search-panel'}/>
             </div>
     );

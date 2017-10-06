@@ -3,6 +3,10 @@
 .search-results {
   min-height: ~"calc(100vh - 20.6rem)";
 
+  @media @tablet {
+
+  }
+
   &__top-panel {
     //height: 4rem;
     background: #eee;
@@ -14,14 +18,27 @@
     color: #555;
   }
 
+  &__movies-amount {
+    @media @tablet {
+      display: block;
+      text-align: center;
+      border-bottom: 1px solid @light-grey-color;
+    }
+  }
+
   &__sort-box {
     float: right;
+
+    @media @tablet {
+      float: none;
+      text-align: center;
+    }
   }
 
   &__sort-criterion {
     display: none;
 
-    &+label {
+    & + label {
       display: inline-block;
       margin: 0 .5rem;
       cursor: pointer;
@@ -64,5 +81,10 @@
     height: ~"calc(100vh - 24.6rem)";
     line-height: ~"calc(100vh - 20.6rem)";
     font-size: 5rem;
+
+    @media @tablet {
+      height: ~"calc(100vh - 54.6rem)";
+      line-height: ~"calc(100vh - 50.6rem)";
+    }
   }
 }

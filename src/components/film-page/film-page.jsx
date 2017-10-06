@@ -1,3 +1,5 @@
+// DELETE
+
 import React from 'react';
 
 import {FilmHeader} from '../header/film-header';

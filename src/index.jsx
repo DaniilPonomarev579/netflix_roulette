@@ -6,9 +6,10 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ReactRouter from 'react-router';
 
 import {App} from './components/app';
-import {MainPage} from './components/main-page/main-page';
-import {FilmPage} from './components/film-page/film-page';
-import {SearchResults} from '../src/components/search-results/search-results';
+import {Content} from './components/content/content';
+// import {MainPage} from './components/main-page/main-page';
+// import {FilmPage} from './components/film-page/film-page';
+// import {SearchResults} from '../src/components/search-results/search-results';
 import { NotFound } from './components/not-found/not-found';
 
 // window.currentFilms = [
@@ -117,9 +118,9 @@ ReactDOM.render((
     <Router>
         <App>
             <Switch>
-                <Route exact path="/" component={MainPage}/>
-                <Route path="/film/:film" component={FilmPage}/>
-                <Route path="/search/:query" component={MainPage}/>
+                <Route exact path="/" component={Content}/>
+                <Route path="/film/:film" component={Content}/>
+                <Route path="/search/:query" component={Content}/>
                 <Route path="*" component={NotFound} />
             </Switch>
         </App>

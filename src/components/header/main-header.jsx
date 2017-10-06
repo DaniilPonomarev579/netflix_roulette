@@ -1,3 +1,5 @@
+// DELETE
+
 import React from 'react';
 import {Searcher} from '../searcher/searcher';
 import {Link} from 'react-router-dom';

@@ -10,26 +10,16 @@ export class SearchResults extends React.Component {
 
         this.state = {
             results    : [],
-            queryInput : '',
-            queryFilter: ''
+            query: props.query,
+            // queryInput : '',
+            // queryFilter: ''
         };
 
-        this.getQueryInput = this.getQueryInput.bind(this);
-        this.getQueryFilter = this.getQueryFilter.bind(this);
+        // this.getQueryInput = this.getQueryInput.bind(this);
+        // this.getQueryFilter = this.getQueryFilter.bind(this);
         this.search = this.search.bind(this);
         this.sortByReleaseDate = this.sortByReleaseDate.bind(this);
         this.sortByRating = this.sortByRating.bind(this);
-    }
-
-    getQueryInput(props) {
-        this.setState({
-            queryInput: props.query.slice(props.query.indexOf('input=') + 6,
-                props.query.indexOf('&filter'))
-        });
-    }
-
-    getQueryFilter(props) {
-        this.setState({queryFilter: props.query.slice(props.query.indexOf('filter=') + 7)});
     }
 
     search() {
@@ -39,11 +29,13 @@ export class SearchResults extends React.Component {
         };
 
 
-        let request = `https://www.netflixroulette.net/api/api.php?` +
-            `${this.state.queryFilter.localeCompare('title') === 0 ? 'title' : 'director'}=` +
-            `${this.state.queryInput}`;
+        // let request = `https://www.netflixroulette.net/api/api.php?` +
+        //     `${this.state.queryFilter.localeCompare('title') === 0 ? 'title' : 'director'}=` +
+        //     `${this.state.queryInput}`;
 
-        fetch(request)
+        console.log('search-results query');
+        console.log(this.state.query);
+        fetch(this.state.query)
             .then(function (response) {
                 if (response.status !== 200) {
                     throw new Error(response.status);
@@ -89,14 +81,37 @@ export class SearchResults extends React.Component {
     }
 
     componentDidMount() {
-        this.getQueryInput(this.props);
-        this.getQueryFilter(this.props);
+        this.setState({
+            query: this.props.query,
+            // queryInput: this.props.query.slice(this.props.query.indexOf('input=') + 6,
+            //     this.props.query.indexOf('&filter')),
+            // queryFilter: this.props.query.slice(this.props.query.indexOf('filter=') + 7),
+            mode: this.props.mode
+        });
         setTimeout(() => this.search(), 0);
     }
 
+    // getQueryInput(props) {
+    //     this.setState({
+    //         queryInput: props.query.slice(props.query.indexOf('input=') + 6,
+    //             props.query.indexOf('&filter'))
+    //     });
+    // }
+    //
+    // getQueryFilter(props) {
+    //     this.setState({queryFilter: props.query.slice(props.query.indexOf('filter=') + 7)});
+    // }
+
     componentWillReceiveProps(nextProps) {
-        this.getQueryInput(nextProps);
-        this.getQueryFilter(nextProps);
+        // this.getQueryInput(nextProps);
+        // this.getQueryFilter(nextProps);
+        this.setState({
+            query: nextProps.query,
+            // queryInput: nextProps.query.slice(nextProps.query.indexOf('input=') + 6,
+            //     nextProps.query.indexOf('&filter')),
+            // queryFilter: nextProps.query.slice(nextProps.query.indexOf('filter=') + 7),
+            mode: nextProps.mode
+        });
         setTimeout(() => this.search(), 0);
     }
 
@@ -108,12 +123,12 @@ export class SearchResults extends React.Component {
         return (
             <div className='search-results'>
                 {this.state.results.length === 0 ?
-                 (<div className="search-results__top-panel"></div>) :
-                 (<div className="search-results__top-panel">
+                 (<div className='search-results__top-panel'></div>) :
+                 (<div className='search-results__top-panel'>
                      {this.state.results.length === 1 ?
-                      (<span>1 movie found</span>) :
-                      (<span>{this.state.results.length} movies found</span>)}
-                     <div className="search-results__sort-box">
+                      (<span className='search-results__movies-amount'>1 movie found</span>) :
+                      (<span className='search-results__movies-amount'>{this.state.results.length} movies found</span>)}
+                     <div className='search-results__sort-box'>
                          <span>Sort by</span>
                          <input type='radio'
                                 className='search-results__sort-criterion'
@@ -131,7 +146,7 @@ export class SearchResults extends React.Component {
                                 id='sort-criterion-rating'
                                 onClick={this.sortByRating}
                                 value='rating'/>
-                         <label className='search-results__sort-label' htmlFor="sort-criterion-rating">
+                         <label className='search-results__sort-label' htmlFor='sort-criterion-rating'>
                              rating
                          </label>
                      </div>

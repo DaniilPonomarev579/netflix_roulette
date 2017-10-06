@@ -1,3 +1,5 @@
+// DELETE
+
 import React from 'react';
 import {MainHeader} from '../header/main-header';
 import {SearchResults} from '../search-results/search-results';

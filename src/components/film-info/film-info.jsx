@@ -33,23 +33,27 @@ export class FilmInfo extends React.Component {
     render() {
         return (
             <div>
-                {this.state.film === null ?
-                 (<span style={{fontSize: '5rem', color: '#fff', display: 'block', textAlign: 'center'}}>Unexpected error</span>) :
-                 (<div>
-                     <img src={this.state.film.poster} alt='film-poster' className='film__poster film__poster--large'/>
-                     <div className="film__info-wrapper">
-                         <span className='film__title film__title--large'>{this.state.film.show_title}</span>
-                         {this.getRating()}
-                         <br/>
-                         <span className='film__category film__category--large'>{this.state.film.category}</span>
-                         <span className='film__release-year film__release-year--large'>{this.state.film.release_year}</span>
-                         <span className='film__runtime'>{this.state.film.runtime}</span>
-                         <br/>
-                         <span className='film__summary'>{this.state.film.summary}</span>
-                         <span className='film__director'>{this.state.film.director}</span>
-                         <span className='film__cast'>{this.state.film.show_cast}</span>
-                     </div>
-                 </div>)}
+                {this.state.film ?
+                 (this.state.film.show_title ?
+                  (<div>
+                      <img src={this.state.film.poster} alt='film-poster' className='film__poster film__poster--large'/>
+                      <div className="film__info-wrapper">
+                          <span className='film__title film__title--large'>{this.state.film.show_title}</span>
+                          {this.getRating()}
+                          <br/>
+                          <span className='film__category film__category--large'>{this.state.film.category}</span>
+                          <span className='film__release-year film__release-year--large'>{this.state.film.release_year}</span>
+                          <span className='film__runtime'>{this.state.film.runtime}</span>
+                          <br/>
+                          <span className='film__summary'>{this.state.film.summary}</span>
+                          <span className='film__director'>{this.state.film.director}</span>
+                          <span className='film__cast'>{this.state.film.show_cast}</span>
+                      </div>
+                  </div>) :
+                  (<span style={{fontSize: '5rem', color: '#fff', display: 'block', textAlign: 'center'}}>
+                      No film found
+                  </span>)) :
+                 (<span style={{fontSize: '5rem', color: '#fff', display: 'block', textAlign: 'center'}}>Unexpected error</span>)}
             </div>
         );
     }

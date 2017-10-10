@@ -4,11 +4,14 @@
   min-height: ~"calc(100vh - 20.6rem)";
 
   @media @tablet {
+    min-height: ~"calc(100vh - 25.6rem)";
+  }
 
+  &--film {
+    min-height: ~"calc(100vh - 48.6rem)";
   }
 
   &__top-panel {
-    //height: 4rem;
     background: #eee;
     padding: 1rem 4rem;
     min-height: 4rem;
@@ -81,6 +84,11 @@
     height: ~"calc(100vh - 24.6rem)";
     line-height: ~"calc(100vh - 20.6rem)";
     font-size: 5rem;
+
+    &--film {
+      height: ~"calc(100vh - 54.6rem)";
+      line-height: ~"calc(100vh - 58.6rem)";
+    }
 
     @media @tablet {
       height: ~"calc(100vh - 54.6rem)";

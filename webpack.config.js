@@ -10,20 +10,12 @@ module.exports = {
     context: CLIENT_DIR,
 
     entry: {
-        // vendor: ['react', 'react-dom', 'express'],
         app   : './index.jsx',
-        //+ styles: './styles/styles.less' // не надо,все стили импортятся прямо в компоненты
-        //+ не использовать export default, надо без него и в импорте {}
-        // на странице с фильмом сначала рендерится спиннер, потом по componentDidMount выполняется запрос через fetch
-        //+ название компонента должно совпадать с именем файла
-        //+ по кнопке на форме в функции preventDefault и программно делать через WithRouter
-        // один компонент хедера и один контента, а что именно рендерить он понимает по mode
     },
 
     output: {
         path    : DIST_DIR,
         filename: '[name].js',
-        // filename: 'bundle.js',
         publicPath: '/'
     },
 
@@ -33,10 +25,10 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
 
-    watch: true,
+    watch: false,
 
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             PRODUCTION: false,
             VERSION   : JSON.stringify('1.0.0'),
@@ -48,13 +40,6 @@ module.exports = {
                 template: './index.html'
             }
         ),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name     : ['vendor'],
-        //     filename: '[name].js',
-        //     // minChunks: 2,
-        //     // chunks: ["pageA", "pageB"],
-        //     // (Only use these entries)
-        // }),
         new ExtractTextPlugin({
             filename : 'styles.css',
             allChunks: true

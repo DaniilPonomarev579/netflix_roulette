@@ -6,14 +6,15 @@ import {FilmInfo} from '../film-info/film-info';
 
 import './header.less';
 import '../../common/button/button.less';
+import {Spinner} from "../spinner/spinner";
 
 export class Header extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            mode        : props.mode,
-            fireRedirect: false,
+            mode: props.mode,
+            // fireRedirect: false,
         };
 
         this.returnToSearch = this.returnToSearch.bind(this);
@@ -45,7 +46,7 @@ export class Header extends React.Component {
 
                 {this.state.mode.localeCompare('search') === 0 ?
                  (null) :
-                 (<FilmInfo film={this.state.film}/>)}
+                 (this.props.film ? (<FilmInfo film={this.props.film}/>) : (<Spinner/>))}
             </div>
         );
     }
